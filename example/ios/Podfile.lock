@@ -1,5 +1,5 @@
 PODS:
-  - alarm_calendar (0.0.2):
+  - alarm_calendar (0.0.3):
     - Flutter
   - Flutter (1.0.0)
 
@@ -14,9 +14,9 @@ EXTERNAL SOURCES:
     :path: Flutter
 
 SPEC CHECKSUMS:
-  alarm_calendar: fb2ee084567ad3f5ff76ca27f248a7b170351556
+  alarm_calendar: ec57bf439c7cc79b0144dee41e7fb0b326e8ed61
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
 
 PODFILE CHECKSUM: 3dbe063e9c90a5d7c9e4e76e70a821b9e2c1d271
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.8.4

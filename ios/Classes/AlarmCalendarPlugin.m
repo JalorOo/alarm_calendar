@@ -23,7 +23,7 @@ bool bool_false = false;
     [self createCalendars: call result: result];
   } else if ([@"selectEvent" isEqualToString:call.method]) {
     [self selectCalendars: call result: result];
-  } else if ([@"deleteEvent" isEqualToString:call.method]) {
+  } else if ([@"deleteEvent" isEqualToString:call.method]) {//删除事件
     
     NSString *arrayStr = [[NSUserDefaults standardUserDefaults]objectForKey:@"my_eventIdentifier"];
     NSLog(@"日历提醒ID：%@",arrayStr);
@@ -40,20 +40,10 @@ bool bool_false = false;
     if( dic[@"eventId"] != Nil && ![dic[@"eventId"]  isEqual: @"1"] && ![dic[@"eventId"]  isEqual: @""] ){
       EKEvent *event = [[[EventManger shareInstance] store] eventWithIdentifier:dic[@"eventId"]];
       
-      NSMutableArray *array = [[arrayStr componentsSeparatedByString:@","] mutableCopy];
-      [array removeObject:dic[@"eventId"]];
-      
-      BOOL status = bool_false;
-      if( !event ){
-        NSLog(@"日历提醒ID：%@",event.eventIdentifier);
-        
-        NSString *string = [array componentsJoinedByString:@","];
-        // 保存在沙盒，避免重复添加等其他判断
-        [[NSUserDefaults standardUserDefaults] setObject:string forKey:@"my_eventIdentifier"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        status = [[EventManger shareInstance] deleteEvent: event] == YES ? bool_true : bool_false;
-      }
+      NSLog(@"获得日历提醒ID：%@",event.eventIdentifier);
+      // 执行删除
+      BOOL status = [[EventManger shareInstance] deleteEvent: event];
+      NSLog(@"删除日历提醒--b-->%@",status?@"YES":@"NO");
       result(@(status));
     } else {
       // 保存在沙盒，避免重复添加等其他判断

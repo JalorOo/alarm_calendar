@@ -70,9 +70,10 @@ class _MyAppState extends State<MyApp> {
                 color: Colors.blue,
                 textColor: Colors.white,
                 child: new Text('删除日程'),
-                onPressed: () {
-                  AlarmCalendar.deleteEvent(calendars.getEventId);
-                  calendars.setEventId = '';
+                onPressed: () async {
+                  var a = await AlarmCalendar.deleteEvent(calendars.getEventId);
+                  print("结果："+a.toString());
+                  //calendars.setEventId = '';
                 },
               ),
             ],
